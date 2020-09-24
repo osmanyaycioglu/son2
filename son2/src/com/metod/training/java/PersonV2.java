@@ -2,7 +2,7 @@ package com.metod.training.java;
 
 import java.util.Date;
 
-public class Person {
+public class PersonV2 {
 
     private String name;
     private String surname;
@@ -13,61 +13,9 @@ public class Person {
     private Date   birthdate;
 
 
-    public Person() {
+    private PersonV2() {
     }
 
-    public Person(final String nameParam,
-                  final String surnameParam) {
-        super();
-        this.name = nameParam;
-        this.surname = surnameParam;
-    }
-
-
-    public Person(final String nameParam,
-                  final String surnameParam,
-                  final String emailParam,
-                  final String phoneParam,
-                  final String departmentParam,
-                  final String noParam,
-                  final Date birthdateParam) {
-        super();
-        this.name = nameParam;
-        this.surname = surnameParam;
-        this.email = emailParam;
-        this.phone = phoneParam;
-        this.department = departmentParam;
-        this.no = noParam;
-        this.birthdate = birthdateParam;
-    }
-
-    public Person(final String nameParam,
-                  final String surnameParam,
-                  final String emailParam,
-                  final String phoneParam,
-                  final String departmentParam,
-                  final String noParam) {
-        super();
-        this.name = nameParam;
-        this.surname = surnameParam;
-        this.email = emailParam;
-        this.phone = phoneParam;
-        this.department = departmentParam;
-        this.no = noParam;
-    }
-
-    public static Person createPersonVer2(final String nameParam,
-                                          final String surnameParam,
-                                          final String emailParam,
-                                          final String phoneParam) {
-        Person personLoc = new Person();
-        personLoc.name = nameParam;
-        personLoc.surname = surnameParam;
-        personLoc.email = emailParam;
-        personLoc.phone = phoneParam;
-        return personLoc;
-
-    }
 
     public String getEmail() {
         return this.email;
@@ -98,13 +46,75 @@ public class Person {
         return this.name;
     }
 
-    //    public void setName(final String nameParam) {
-    //        this.name = nameParam;
-    //    }
-
     public String getSurname() {
         return this.surname;
     }
+
+    public static PersonV2Builder getBuilder() {
+        return new PersonV2Builder();
+    }
+
+    public static class PersonV2Builder {
+
+        private final PersonV2 pver2 = new PersonV2();
+
+
+        private PersonV2Builder() {
+        }
+
+        public PersonV2Builder name(final String nameParam) {
+            this.pver2.name = nameParam;
+            return this;
+        }
+
+
+        public PersonV2Builder surname(final String surnameParam) {
+            this.pver2.surname = surnameParam;
+            return this;
+        }
+
+
+        public PersonV2Builder email(final String emailParam) {
+            this.pver2.email = emailParam;
+            return this;
+        }
+
+
+        public PersonV2Builder phone(final String phoneParam) {
+            this.pver2.phone = phoneParam;
+            return this;
+        }
+
+
+        public PersonV2Builder department(final String departmentParam) {
+            this.pver2.department = departmentParam;
+            return this;
+        }
+
+
+        public PersonV2Builder no(final String noParam) {
+            this.pver2.no = noParam;
+            return this;
+        }
+
+
+        public PersonV2Builder birthdate(final Date birthdateParam) {
+            this.pver2.birthdate = birthdateParam;
+            return this;
+        }
+
+        public PersonV2 buildV1() {
+            // Validation v1
+            return this.pver2;
+        }
+
+        public PersonV2 buildV2() {
+            // Validation v2
+            return this.pver2;
+        }
+
+    }
+
 
     @Override
     public int hashCode() {
@@ -126,7 +136,7 @@ public class Person {
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        Person other = (Person) obj;
+        PersonV2 other = (PersonV2) obj;
         if (this.name == null) {
             if (other.name != null) {
                 return false;
