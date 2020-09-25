@@ -5,6 +5,7 @@ import com.metod.training.java.Person;
 public class LambdaRun {
 
     public static void main(final String[] args) {
+        LambdaRun lambdaRunLoc = new LambdaRun();
 
         int a = 100;
 
@@ -42,14 +43,24 @@ public class LambdaRun {
 
         IFuncIntf ftd3 = LambdaRun::xyz;
 
+        IFuncIntf ftd4 = lambdaRunLoc::abc;
+
+        IFuncIntf ftd45 = z -> lambdaRunLoc.abc(z);
+
         System.out.println(ftd.execute("osman"));
         System.out.println(ftd2.execute("osman"));
         System.out.println(ftd3.execute("osman"));
+        System.out.println(ftd4.execute("osman"));
+        System.out.println(ftd45.execute("osman"));
 
     }
 
     public static String xyz(final String str) {
         return "Hello " + str;
+    }
+
+    public String abc(final String str) {
+        return "ABC Hello " + str;
     }
 
 }
